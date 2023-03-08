@@ -10,12 +10,14 @@ h1 {
     font-size: 75px;
 }
 
+.title {
+    border-style: dotted;
+}
+
 h2 {
     font-size: 35px;
 }
 
-
-p {
-    font-size: 25px;
-    color: green; 
+.text {
+    font-size: 18px;
 }
