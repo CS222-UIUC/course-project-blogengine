@@ -6,6 +6,16 @@
     justify-content: center;
 }
 
-/* p{
-    text-align: center;
-} */
+h1 {
+    font-size: 75px;
+}
+
+h2 {
+    font-size: 35px;
+}
+
+
+p {
+    font-size: 25px;
+    color: green; 
+}
