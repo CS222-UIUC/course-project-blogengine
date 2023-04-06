@@ -42,7 +42,7 @@ export default function Blog() {
                     <label>Your Post</label>
                     <textarea name="content" className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Let the ink flow!"></textarea>
                 </div>
-                <button className='btn btn-primary'>HAHAHAHA</button> 
+                <button className='btn btn-primary'>Post</button> 
             </form>
             
             {/* type="submit" class="btn btn-primary" */}
