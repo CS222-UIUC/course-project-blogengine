@@ -12,7 +12,7 @@ export default function About() {
                 </div>
                 <div className="form-group">
                     <label>Email</label>
-                    <input className="form-control" name="email" aria-describedby="nameHelp" placeholder="Please type in your email"></input>
+                    <input className="form-control" name="email" aria-describedby="nameHelp" placeholder="Please type in your email" />
                 </div>
                 <button className='btn btn-primary'>Sign In</button> 
             </form>
