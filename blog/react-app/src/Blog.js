@@ -1,42 +1,57 @@
 import React, { useState } from 'react';
 
 export default function Blog() {
-    let [title, setTitle] = useState();
-    let [content, setContent] = useState();
+    console.log("in in blog");
 
-    const titleUpdate = (event) => { // Dealing with name field changes to update our state
-        setTitle(event.target.value);
-        setContent(event.target.value);
-    }
+    const [input, setInput] = useState({
+        title: "",
+        content: ""
+    });
 
-    const handleSubmit = (e) => { // Once the form has been submitted, this function will post to the backend
-        const postURL = "http://localhost:3000/api/staff/" //Our previously set up route in the backend
-        fetch(postURL, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ // We should keep the fields consistent for managing this data later
-                title: title,
-                content: content,
-            })
-        })
-        .then(()=>{
-            // Once posted, the user will be notified 
-            alert('You have been added to the system!');
+    function handleChange(event) {
+        const {name, value} = event.target;
+
+        setInput(prevInput => {
+            return {
+                ...prevInput,
+                [name]: value
+            }
         })
     }
+
+    const handleClick = (e) => {
+        e.preventDefault();
+
+        console.log(input);
+    }
+    // const handleClick = (e) => { // Once the form has been submitted, this function will post to the backend
+    //     const postURL = "http://localhost:3000/api/staff/" //Our previously set up route in the backend
+    //     fetch(postURL, {
+    //         method: 'POST',
+    //         headers: {
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify({ // We should keep the fields consistent for managing this data later
+    //             title: title,
+    //             content: content,
+    //         })
+    //     })
+    //     .then(()=>{
+    //         // Once posted, the user will be notified 
+    //         alert('You have been added to the system!');
+    //     })
+    // }
 
     return (
         <div>
             <h1>Blog</h1>
 
-            <form method='post' action='/'>
+            <form method='post' action='/blog'>
                 <div className="form-group">
                     <label>Title</label>
                     <input className="form-control" name="title" aria-describedby="emailHelp" placeholder="Enter title" />
-                    <small id="emailHelp" className="form-text text-muted">super cool title that draws people in.</small>
+                    <small id="titleHelp" className="form-text text-muted">super cool title that draws people in.</small>
                 </div>
                 <div className="form-group">
                     <label>Your Post</label>

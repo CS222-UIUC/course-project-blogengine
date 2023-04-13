@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import Home from './Home';
 import Blog from './Blog';
 import About from './About';
+import Posts from './Posts';
 
 
 function App() {
@@ -14,6 +15,9 @@ function App() {
       break;
     case "/blog":
       component = <Blog />;
+      break;
+    case "/posts":
+      component = <Posts />;
       break;
     case "/about":
       component = <About />;
