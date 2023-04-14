@@ -16,9 +16,6 @@ function App() {
     case "/blog":
       component = <Blog />;
       break;
-    case "/posts":
-      component = <Posts />;
-      break;
     case "/about":
       component = <About />;
       break;
