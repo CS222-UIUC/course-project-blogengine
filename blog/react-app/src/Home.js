@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function Home() {
+    console.log("home");
     return <div>
         <div class="title">
         <h1><center>The Inkwell</center></h1>
