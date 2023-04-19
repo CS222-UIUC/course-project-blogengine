@@ -1,17 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
     return <nav className="nav">
         <a href="/" className="site-title">The Inkwell</a>
         <ul>
             <li>
-                <a href='/'>Home</a>
+                <Link to='/'>Home</Link>
             </li>
             <li>
-                <a href='/blog'>Blog</a>
+                <Link to='/blog'>Blog</Link>
             </li>
             <li>
-                <a href='/about'>About</a>
+                <Link to='/posts'>Posts</Link>
+            </li>
+            <li>
+                <Link to='/about'>About</Link>
             </li>
         </ul>
     </nav>

@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function Home() {
+    console.log("home");
     return (
         <div>
             {/* <div className="title" style={{ fontFamily: 'cursive', display: 'grid', gridTemplateColumns: 'auto auto', alignItems: 'center', gridGap: '5px' }}>
