@@ -1,9 +1,7 @@
 
 const path = require("path");
 const express = require("express");
-const router = express.Router();
 const app = express(); // create express app
-const cors = require('cors');
 
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -12,7 +10,10 @@ const bodyParser = require("body-parser");
 // const slug = require('mongoose-slug-generator');
 // mongoose.plugin(slug);
 
-app.use(cors());
+//slug stuff
+// const slug = require('mongoose-slug-generator');
+// mongoose.plugin(slug);
+
 app.use(express.json());
 
 app.use(bodyParser.urlencoded({extended: false}));
