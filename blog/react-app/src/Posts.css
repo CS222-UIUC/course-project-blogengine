@@ -3,7 +3,8 @@
     border-radius: 5px;
     padding: 15px;
     margin: 20px 0;
-    box-shadow: 0 0 3px 2px #cec7c759;
+    box-shadow: 0 0 3px 2px #D2DAFF;
+    /* cec7c759 */
 }
 
 /* .snippet {
@@ -30,4 +31,9 @@
 
 .nowrap-body {
     white-space: nowrap;
+    color: #645CAA;
+}
+
+.nowrap-body:hover {
+    color: #A084CA;
 }

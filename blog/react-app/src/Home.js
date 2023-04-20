@@ -17,6 +17,6 @@ export default function Home() {
         <p><center>You can make blog posts, new friends, and even comment on their posts.</center></p>
         </div>
 
-        <img src="https://mailrelay.com/wp-content/uploads/2018/03/que-es-un-blog-1.png" alt="Happy blogging!" class="center"></img>
+        <center><img src="https://mailrelay.com/wp-content/uploads/2018/03/que-es-un-blog-1.png" alt="Happy blogging!" class="center"></img></center>
     </div>
 }

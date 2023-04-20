@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { parse } from 'marked';
 
 export default function Post() {
     console.log("in the post");
@@ -14,11 +15,15 @@ export default function Post() {
       .then((data) => setPost(data));
   }, [slug]);
 
+  const renderText = (content) => {
+    const html = parse(content, { sanitize: true });
+    return { __html: html };
+  };
 
   return (
     <div>
       <h1>{post.title}</h1>
-      <p>{post.content}</p>
+      <div dangerouslySetInnerHTML={renderText(post.content)}></div>
     </div>
   );
 }

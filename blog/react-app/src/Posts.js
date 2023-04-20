@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import './Posts.css';
+import { parse } from 'marked';
 
 // import axios from "axios";
 
@@ -27,6 +28,12 @@ export default function Posts() {
     //     strict: true, // Replace special characters with dashes
     // });
 
+    const renderText = (content) => {
+        const html = parse(content, { sanitize: true });
+        const shorter_html = html.length > 100 ? html.substring(0, 100) + "..." : html;
+        return { __html: shorter_html };
+    };
+
     return (
         <div>
             <h1 id='header'>Posts</h1>
@@ -40,7 +47,8 @@ export default function Posts() {
                         </h3>
                         <div className="snippet">
                             {/* <p dangerouslySetInnerHTML={{ __html: blog.body }}></p> */}
-                            <p>{blog.content.length > 100 ? blog.content.substring(0, 100) + "..." : blog.content}</p>
+                            {/* <p>{blog.content.length > 100 ? blog.content.substring(0, 100) + "..." : blog.content}</p> */}
+                            <p dangerouslySetInnerHTML={renderText(blog.content)}></p>
                             <Link to={`/posts/${blog.slug}`} className="nowrap-body">
                                 {blog.content.length > 100 ? "Read more" : "Go to post"}{" "}
                             {/* <i className="fas fa-arrow-circle-right"></i> */}
