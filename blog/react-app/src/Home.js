@@ -3,10 +3,6 @@ import React from 'react';
 export default function Home() {
     return (
         <div>
-            {/* <div className="title" style={{ fontFamily: 'cursive', display: 'grid', gridTemplateColumns: 'auto auto', alignItems: 'center', gridGap: '5px' }}>
-                <h1 style={{ margin: '0' }}>The Inkwell</h1>
-                <img src="https://a.wattpad.com/useravatar/GreenForestWitch.256.758411.jpg" alt="Title Image" className="title-image" />
-            </div> */}
             <div className="title" style={{ fontFamily: 'cursive' }}>
                 <h1><center>The Inkwell</center></h1>
             </div>
@@ -24,5 +20,3 @@ export default function Home() {
         </div>
     );
 }
-
-//<h1><center>The Inkwell</center></h1>
