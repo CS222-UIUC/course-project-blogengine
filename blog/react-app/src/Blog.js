@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { parse } from 'marked';
+import DOMPurify from 'dompurify';
+import { Renderer, parse } from 'marked';
 import './Blog.css';
 
 export default function Blog() {
@@ -27,9 +28,39 @@ export default function Blog() {
     console.log(input);
   };
 
+  const customRenderer = new Renderer();
+  customRenderer.image = function(href, title, text) {
+    const match = text.match(/(\d+)\s+(\d+)/);
+    const match1 = text.match(/(\d+)/);
+    if (match) {
+      const width = match[1] + 'px';
+      const height = match[2] + 'px';
+      const style = `width: ${width}; height: ${height};`;
+      return `<img src="${href}" alt="${text}" title="${title}" style="${style}">`;
+    } else if (match1) {
+      const img = new Image();
+      img.src = href;
+      
+      const origWidth = img.naturalWidth;
+      const origHeight = img.naturalHeight;
+
+      const scale = match1[1];
+      const newWidth = origWidth * scale;
+      const newHeight = origHeight * scale;
+      const style = `width: ${newWidth}px; height: ${newHeight}px;`;
+
+      img.remove();
+
+      return `<img src="${href}" alt="${text}" title="${title}" style="${style}">`;
+    } else {
+      return `<img src="${href}" alt="${text}" title="${title}">`;
+    }
+  };
+
   const renderText = (content) => {
-    const html = parse(content, { sanitize: true });
-    return { __html: html };
+    const html = parse(content, {renderer: customRenderer});
+    const sanitizedHtml = DOMPurify.sanitize(html);
+    return { __html: sanitizedHtml };
   };
 
   return (
