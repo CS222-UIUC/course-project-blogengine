@@ -30,29 +30,33 @@ export default function Blog() {
 
   const customRenderer = new Renderer();
   customRenderer.image = function(href, title, text) {
-    const match = text.match(/(\d+)\s+(\d+)/);
-    const match1 = text.match(/(\d+)/);
+    const match = text.match(/(?<=\|)\s*(\d+)\s+(\d+)/);
+    const match1 = text.match(/(?<=\|)\s*(?:0*\.)?\d+(?:\.\d+)?/); // /^\d+(\.\d+)?$/ /(?<!\d)0*(\d*)(?:\.(\d+))?/
     if (match) {
       const width = match[1] + 'px';
       const height = match[2] + 'px';
+      text = text.replace("|" + match[0], '').trim();
       const style = `width: ${width}; height: ${height};`;
       return `<img src="${href}" alt="${text}" title="${title}" style="${style}">`;
     } else if (match1) {
       const img = new Image();
       img.src = href;
-      
+      console.log(match1);
       const origWidth = img.naturalWidth;
       const origHeight = img.naturalHeight;
 
-      const scale = match1[1];
+      const scale = match1[0];
       const newWidth = origWidth * scale;
       const newHeight = origHeight * scale;
+      text = text.replace("|" + match1[0], '').trim();
       const style = `width: ${newWidth}px; height: ${newHeight}px;`;
 
       img.remove();
 
       return `<img src="${href}" alt="${text}" title="${title}" style="${style}">`;
     } else {
+      console.log("IM HERE");
+
       return `<img src="${href}" alt="${text}" title="${title}">`;
     }
   };

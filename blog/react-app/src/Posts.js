@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import './Posts.css';
-import { parse } from 'marked';
+import DOMPurify from 'dompurify';
+import { Renderer, parse } from 'marked';
 
 // import axios from "axios";
 
@@ -28,9 +29,43 @@ export default function Posts() {
     //     strict: true, // Replace special characters with dashes
     // });
 
+    const customRenderer = new Renderer();
+    customRenderer.image = function(href, title, text) {
+        const match = text.match(/(?<=\|)\s*(\d+)\s+(\d+)/);
+        const match1 = text.match(/(?<=\|)\s*(?:0*\.)?\d+(?:\.\d+)?/); // /^\d+(\.\d+)?$/ /(?<!\d)0*(\d*)(?:\.(\d+))?/
+        if (match) {
+        const width = match[1] + 'px';
+        const height = match[2] + 'px';
+        text = text.replace("|" + match[0], '').trim();
+        const style = `width: ${width}; height: ${height};`;
+        return `<img src="${href}" alt="${text}" title="${title}" style="${style}">`;
+        } else if (match1) {
+        const img = new Image();
+        img.src = href;
+        console.log(match1);
+        const origWidth = img.naturalWidth;
+        const origHeight = img.naturalHeight;
+
+        const scale = match1[0];
+        const newWidth = origWidth * scale;
+        const newHeight = origHeight * scale;
+        text = text.replace("|" + match1[0], '').trim();
+        const style = `width: ${newWidth}px; height: ${newHeight}px;`;
+
+        img.remove();
+
+        return `<img src="${href}" alt="${text}" title="${title}" style="${style}">`;
+        } else {
+        console.log("IM HERE");
+
+        return `<img src="${href}" alt="${text}" title="${title}">`;
+        }
+    };
+
     const renderText = (content) => {
-        const html = parse(content, { sanitize: true });
-        const shorter_html = html.length > 100 ? html.substring(0, 100) + "..." : html;
+        const html = parse(content, {renderer: customRenderer});
+        const sanitizedHtml = DOMPurify.sanitize(html);
+        const shorter_html = sanitizedHtml.length > 100 ? sanitizedHtml.substring(0, 100) + "..." : sanitizedHtml;
         return { __html: shorter_html };
     };
 
