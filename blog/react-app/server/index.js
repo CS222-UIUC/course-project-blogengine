@@ -23,10 +23,22 @@ mongoose.connect("mongodb+srv://goose:cRz5rNM2QBwXhOtn@bloggoose.wdsjcvj.mongodb
 const slugify1 = require('slugify');
 
 const notesSchema = mongoose.Schema({
-  title: String,
-  content: String,
-  //Define the slug parameters
-  slug: { type: String, slug: "title"}, //got rid of unique lol 
+  // title: String,
+  // content: String,
+  // //Define the slug parameters
+  // slug: { type: String, slug: "title"}, //got rid of unique lol 
+  title: { type: String, required: true },
+  content: { type: String, required: true },
+  slug: { type: String, slug: function(doc) {
+    const title = doc.title;
+    const asciiValues = doc.content
+      .substring(0, Math.min(doc.content.length, 10))
+      .split('')
+      .map(char => char.charCodeAt(0))
+      .reduce((sum, val) => sum + val, 0) % 1000;
+    const slug = `${title}-${asciiValues}`;
+    return slugify(slug, { lower: true, remove: /[*+~.()'"!:@]/g });
+  }, index: true }
 })
 
 // {
@@ -75,17 +87,30 @@ app.post("/blog", async function(req, res) {
       content: req.body.content
     });
 
-    const postSlug = slugify1(newNote.title, {
-      lower: true,
-      strict: true,
-    });
-    newNote.slug = postSlug;
+    // const postSlug = slugify1(newNote.title, {
+    //   lower: true,
+    //   strict: true,
+    // });
+    // newNote.slug = postSlug;
+
+    if (!newNote.slug) {
+      console.log("generating slug");
+
+      const slugTitle = slugify1(newNote.title, { lower: true, remove: /[*+~.()'"!:@]/g });
+      const asciiValues = newNote.content.length > 10
+        ? newNote.content.substring(0, 10).split('').reduce((sum, char) => sum + char.charCodeAt(0), 0)
+        : newNote.content.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
+
+      newNote.slug = `${slugTitle}-${asciiValues % 1000}`;
+
+      console.log("slug: " + newNote.slug);
+    }
 
     console.log(req.body.title);
 
     await newNote.save();
 
-    console.log("Generated Slug:", postSlug);
+    // console.log("Generated Slug:", postSlug);
 
     res.redirect("/blog");
   } catch (err) {
