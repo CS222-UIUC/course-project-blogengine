@@ -68,49 +68,54 @@ export default function Blog() {
   };
 
   return (
-    <div>
-        <h1>Blog</h1>
-
-        <form method="post" action="/blog">
-            <div className="form-group">
-                <label>Title</label>
-                <input
-                    className="form-control"
-                    name="title"
-                    aria-describedby="emailHelp"
-                    placeholder="Enter title"
-                    onChange={handleChange}
-                />
-                <small id="titleHelp" className="form-text text-muted">
-                    super cool title that draws people in.
-                </small>
-            </div>
-            <div className="form-group">
-                {/* <label>Your Post</label> */}
-                <div className="d-flex align-items-center justify-content-between">
-                    <label className="d-flex flex-row">Your Post</label>
-                    <label className="d-flex flex-row-reverse">Preview</label>
-                </div>
-                <div className="row">
-                    <div className="col-sm-6">
-                        <textarea
-                            name="content"
-                            className="form-control"
-                            id="exampleFormControlTextarea1"
-                            rows="20"
-                            placeholder="Let the ink flow!"
-                            onChange={handleChange}
-                            value={input.content}
-                        ></textarea>
-                    </div>
-                    <div className="col-sm-6">
-                        <div dangerouslySetInnerHTML={renderText(input.content)}></div>
-                    </div>
-                </div>
-            </div>
-
-            <button className="btn btn-primary">Post</button>
-        </form>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <h1 style={{ textAlign: "center" }}>Blog</h1>
+      <form method="post" action="/blog" style={{ maxWidth: "800px", width: "100%" }}>
+        <div className="form-group">
+          <label>Title</label>
+          <input
+            className="form-control"
+            name="title"
+            aria-describedby="emailHelp"
+            placeholder="Enter title"
+          />
+          <small id="titleHelp" className="form-text text-muted">
+            super cool title that draws people in.
+          </small>
+        </div>
+        <div className="form-group">
+          <label>Your Post</label>
+          <textarea
+            name="content"
+            className="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+            placeholder="Let the ink flow!"
+          ></textarea>
+        </div>
+        <button className="btn btn-primary">Post</button>
+      </form>
+ 
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <img
+          src="https://thumbs.dreamstime.com/z/d-illustration-depicting-set-cut-out-printed-letters-arranged-to-form-words-get-creative-get-creative-concept-108033401.jpg"
+          alt="left-image"
+          style={{ width: "40%", height: "auto", objectFit: "cover", marginRight: "20px" }}
+        />
+        <img
+          src="https://www.success.com/wp-content/uploads/2016/07/waystotapintoyourcreativeself.jpg"
+          alt="right-image"
+          style={{ width: "40%", height: "auto", objectFit: "cover", marginLeft: "20px" }}
+        />
+      </div>
+ 
+      <p style={{ marginTop: "20px" }}>
+        Having trouble coming up with post ideas?&nbsp;
+        <a href="https://coschedule.com/blog/creative-blog-post-ideas-and-topics" target="_blank" rel="noopener noreferrer">
+          Click here
+        </a>
+        &nbsp;to get your creative juices flowing!
+      </p>
     </div>
   );
 }
