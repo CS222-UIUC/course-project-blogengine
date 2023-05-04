@@ -23,7 +23,8 @@ export default function Home() {
             <img src="https://mailrelay.com/wp-content/uploads/2018/03/que-es-un-blog-1.png" alt="Happy blogging!" className="img"></img>
             <img src="https://www.macmillandictionary.com/external/slideshow/full/emoji_sparkle_full.jpg" className="img2"></img>
         </div>
-    );
-}
 
-//<h1><center>The Inkwell</center></h1>
+    //     <center><img src="https://mailrelay.com/wp-content/uploads/2018/03/que-es-un-blog-1.png" alt="Happy blogging!" class="center"></img></center>
+    // </div>
+    )
+}

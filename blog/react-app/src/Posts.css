@@ -1,0 +1,39 @@
+.card {
+    border: solid 1px;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 20px 0;
+    box-shadow: 0 0 3px 2px #D2DAFF;
+    /* cec7c759 */
+}
+
+/* .snippet {
+    margin: 20px 0;
+} */
+
+.snippet h1, .snippet h2, .snippet h3, .snippet h4, .snippet h5, .snippet h6 .snippet p {
+    /* display: inline; */
+    /* font-family: 'Noto Serif', sans-serif; */
+    display: inline;
+    font-weight: bold;
+    font-size: inherit;
+}
+
+.nowrap-title {
+    white-space: nowrap;
+    color: #645CBB; 
+    /* #77037B */
+}
+
+.nowrap-title:hover {
+    color: #A084DC;
+}
+
+.nowrap-body {
+    white-space: nowrap;
+    color: #645CAA;
+}
+
+.nowrap-body:hover {
+    color: #A084CA;
+}
