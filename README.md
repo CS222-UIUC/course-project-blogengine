@@ -7,8 +7,14 @@ Summary:
 - Users can create, preview, delete, save, or view blog posts as well as resize images
 
 Technical Architecture:
+![diagram](blog/react-app/public/technical-architecture.png)
 
 Installation: 
+1. Clone the repository to your local machine.
+2. Run `npm install` to install the necessary dependencies.
+3. Navigate to the react-app folder, and run the website using `npm start`.
+4. Access the web application at `http://localhost:3000`.
+
 
 Group members/roles:
 
