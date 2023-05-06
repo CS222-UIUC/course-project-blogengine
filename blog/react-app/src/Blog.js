@@ -68,33 +68,49 @@ export default function Blog() {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <h1 style={{ textAlign: "center" }}>Blog</h1>
-      <form method="post" action="/blog" style={{ maxWidth: "800px", width: "100%" }}>
-        <div className="form-group">
-          <label>Title</label>
-          <input
-            className="form-control"
-            name="title"
-            aria-describedby="emailHelp"
-            placeholder="Enter title"
-          />
-          <small id="titleHelp" className="form-text text-muted">
-            super cool title that draws people in.
-          </small>
-        </div>
-        <div className="form-group">
-          <label>Your Post</label>
-          <textarea
-            name="content"
-            className="form-control"
-            id="exampleFormControlTextarea1"
-            rows="3"
-            placeholder="Let the ink flow!"
-          ></textarea>
-        </div>
-        <button className="btn btn-primary">Post</button>
-      </form>
+    <div>
+        <h1>Blog</h1>
+
+        <form method="post" action="/blog">
+            <div className="form-group">
+                <label>Title</label>
+                <input
+                    className="form-control"
+                    name="title"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter title"
+                    onChange={handleChange}
+                />
+                <small id="titleHelp" className="form-text text-muted">
+                    super cool title that draws people in.
+                </small>
+            </div>
+            <div className="form-group">
+                {/* <label>Your Post</label> */}
+                <div className="d-flex align-items-center justify-content-between">
+                    <label className="d-flex flex-row">Your Post</label>
+                    <label className="d-flex flex-row-reverse">Preview</label>
+                </div>
+                <div className="row">
+                    <div className="col-sm-6">
+                        <textarea
+                            name="content"
+                            className="form-control"
+                            id="exampleFormControlTextarea1"
+                            rows="20"
+                            placeholder="Let the ink flow!"
+                            onChange={handleChange}
+                            value={input.content}
+                        ></textarea>
+                    </div>
+                    <div className="col-sm-6">
+                        <div dangerouslySetInnerHTML={renderText(input.content)}></div>
+                    </div>
+                </div>
+            </div>
+
+            <button className="btn btn-primary">Post</button>
+        </form>
  
       <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
         <img
