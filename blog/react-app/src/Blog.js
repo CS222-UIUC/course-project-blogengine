@@ -98,7 +98,7 @@ export default function Blog() {
  
       <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
         <img
-          src="https://thumbs.dreamstime.com/z/d-illustration-depicting-set-cut-out-printed-letters-arranged-to-form-words-get-creative-get-creative-concept-108033401.jpg"
+          src="https://img.freepik.com/premium-photo/creative-mind-3d-illustration-with-light-bulb-generative-ai_549702-684.jpg"
           alt="left-image"
           style={{ width: "40%", height: "auto", objectFit: "cover", marginRight: "20px" }}
         />
