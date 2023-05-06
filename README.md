@@ -4,7 +4,7 @@ The Inkwell: A Blog Engine Web Server
 
 Summary:
 - A tool that people can use to create multiple blog posts within the same shared space, as opposed to individual blogging websites
-- Users can create, preview, or view blog posts as well as resize images
+- Users can create, preview, or view blog posts as well as resize images (through Markdown)
 
 Technical Architecture:
 ![diagram](blog/react-app/public/technical-architecture.png)
