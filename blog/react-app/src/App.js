@@ -7,6 +7,7 @@ import About from './About';
 import Posts from './Posts';
 import Post from './Post';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Footer from './Footer';
 
 function App() {
   // let component;
@@ -33,15 +34,18 @@ function App() {
   // </>
   return (
     <>
-      <Navbar />
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/posts" element={<Posts />} />
-          <Route path="/posts/:slug" element={<Post />} /> 
-          <Route path="/about" element={<About />} />
-        </Routes>
+      <div id='page-container'>
+        <Navbar />
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/posts" element={<Posts />} />
+            <Route path="/posts/:slug" element={<Post />} /> 
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </div>
+        <Footer />
       </div>
     </>
   );

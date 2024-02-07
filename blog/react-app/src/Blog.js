@@ -112,7 +112,7 @@ export default function Blog() {
             <button className="btn btn-primary">Post</button>
         </form>
  
-      <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+      {/* <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
         <img
           src="https://img.freepik.com/premium-photo/creative-mind-3d-illustration-with-light-bulb-generative-ai_549702-684.jpg"
           alt="left-image"
@@ -123,7 +123,7 @@ export default function Blog() {
           alt="right-image"
           style={{ width: "40%", height: "auto", objectFit: "cover", marginLeft: "20px" }}
         />
-      </div>
+      </div> */}
  
       <p style={{ marginTop: "20px" }}>
         Having trouble coming up with post ideas?&nbsp;

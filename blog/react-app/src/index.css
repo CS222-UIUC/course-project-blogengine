@@ -1,11 +1,19 @@
 * {
   box-sizing: border-box;
  }
+
+ #page-container {
+  position: relative;
+  min-height: 100vh;
+ }
+ 
+ .container {
+  padding-bottom: 2.5rem;
+ }
  
  body {
   margin: 1;
  }
- 
  
  .summary {
   margin-top: 100px;
@@ -14,6 +22,7 @@
   padding-left: 30px;
   font-size: 400px;
   font-weight: bold;
+  margin-right: 40px;
  }
  
  
@@ -21,28 +30,34 @@
   margin-top: 10px;
   margin-left: -140px;
   font-size: 20px;
- }
- 
- 
- .img {
-  position: relative;
-  z-index: 1;
-  float: right;
-  margin-right: 0px;
-  margin-top: 80px;
+  margin-right: 40px;
  }
  
  
  .img2 {
   position: relative;
-  z-index: 2;
+  z-index: 1;
   float: right;
-  margin-top: -630px;
-  margin-right: 110px;
-  width: 40%;
-  height: 40%;
+  margin-right: 0px;
+  margin-top: -100px;
+  width: 30%;
+  height: 30%;
  }
  
+ 
+ .img {
+  position: relative;
+  z-index: 2;
+  float: right;
+  margin-top: -350px;
+  margin-left: 200px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  width: 30%;
+  height: 30%;
+ } 
+
+
  
  .nav {
   background-color: #210351;
